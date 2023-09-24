@@ -66,7 +66,12 @@ const App = () => {
   const fetchWeather = async () => {
     const URL = `http://localhost:8085/forecast/${inputRef.current.value}`;
     setLoading(true);
-    fetch(URL)
+    fetch(URL,{
+      mode: "cors",
+  credentials: "include",
+  headers: {
+    "Content-Type": "application/json"
+  },})
       .then((res) => res.json())
       .then((data) => {
         setApiData(null);
